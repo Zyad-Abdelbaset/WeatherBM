@@ -11,8 +11,6 @@ import Foundation
 struct ForecastDTO: Decodable {
     
     let forecastday: [ForecastdayDTO]
-    
-    
 }
         
 struct ForecastdayDTO: Decodable {
@@ -26,12 +24,14 @@ struct ForecastdayDTO: Decodable {
         case day
         case hour
     }
-
 }
+
 struct DayDTO: Decodable {
+    
     let maxTempratureInC: Double
     let minTempratureInC: Double
     let condition: ConditionDTO
+    
     enum CodingKeys: String, CodingKey {
         case maxTempratureInC = "maxtemp_c"
         case minTempratureInC = "mintemp_c"

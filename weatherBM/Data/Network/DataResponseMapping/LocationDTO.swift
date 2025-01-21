@@ -14,9 +14,6 @@ struct LocationDTO:Decodable {
     let localtime: String?
     
     enum CodingKeys: String, CodingKey {
-        
-        case name, region, country
-        case localtime
-        
+        case name, region, country,localtime
     }
 }

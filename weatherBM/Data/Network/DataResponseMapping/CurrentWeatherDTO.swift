@@ -28,12 +28,9 @@ struct CurrentWeatherDTO: Decodable {
         case visKM = "vis_km"
         case time
     }
-    
-
 }
 struct ConditionDTO: Decodable {
     let text: String
     let icon: String
     let code: Int
-
 }

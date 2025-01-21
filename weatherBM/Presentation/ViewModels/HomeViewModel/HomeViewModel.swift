@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 protocol HomeViewModelProtocol {
-    var weatherData: PassthroughSubject<WeatherEntity, Never> { get }
+    var weatherPublisher:AnyPublisher<WeatherEntity,Never> { get }
     var foreCastItems: [ForecastdayEntity] { get }
     var showError: (String) -> Void { get set }
     func loadDate()
@@ -18,16 +18,20 @@ protocol HomeViewModelProtocol {
 class HomeViewModel: HomeViewModelProtocol {
     var showError: (String) -> Void = { _ in }
     var useCase:FetchWeatherUsecaseProtocol
-    var weatherData:PassthroughSubject<WeatherEntity,Never>
-    var errorMessage:String
+    var weatherPublisher: AnyPublisher<WeatherEntity, Never>{
+        weatherSubject.eraseToAnyPublisher()
+    }
+    private var weatherSubject:PassthroughSubject<WeatherEntity, Never>
+    private var errorMessage:String
     var foreCastItems: [ForecastdayEntity]
-    private var subscriptions = Set<AnyCancellable>()
+    private var subscriptions: Set<AnyCancellable>
     
-    init() {
-        weatherData = PassthroughSubject<WeatherEntity, Never>()
+    init(usecase: FetchWeatherUsecaseProtocol = FetchWeatherUsecase(), forecastItems: [ForecastdayEntity] = []) {
+        weatherSubject = PassthroughSubject<WeatherEntity, Never>()
         errorMessage = ""
-        foreCastItems = []
-        useCase = FetchWeatherUsecase()
+        self.foreCastItems = []
+        self.useCase = usecase
+        subscriptions = Set<AnyCancellable>()
     }
     
     func loadDate() {
@@ -44,7 +48,7 @@ class HomeViewModel: HomeViewModelProtocol {
                 guard let self = self else {
                     return
                 }
-                self.weatherData.send(weatherData)
+                self.weatherSubject.send(weatherData)
                 self.foreCastItems = weatherData.forecastDayItems
             }.store(in: &self.subscriptions)
 
