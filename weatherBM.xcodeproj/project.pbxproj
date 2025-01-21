@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C0C51D82D4023BF00454ADF /* Mapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0C51D72D4023BF00454ADF /* Mapper.swift */; };
 		3C432ECF2D36F14C006EBAD0 /* FetchWeatherUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C432ECE2D36F14C006EBAD0 /* FetchWeatherUsecase.swift */; };
 		3C432ED22D36F23A006EBAD0 /* WeatherReposatories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C432ED12D36F23A006EBAD0 /* WeatherReposatories.swift */; };
 		3C432EDA2D37B7B6006EBAD0 /* WeatherReposatoriesProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C432ED92D37B7B6006EBAD0 /* WeatherReposatoriesProtocol.swift */; };
@@ -41,6 +42,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3C0C51D72D4023BF00454ADF /* Mapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mapper.swift; sourceTree = "<group>"; };
 		3C432ECE2D36F14C006EBAD0 /* FetchWeatherUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchWeatherUsecase.swift; sourceTree = "<group>"; };
 		3C432ED12D36F23A006EBAD0 /* WeatherReposatories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherReposatories.swift; sourceTree = "<group>"; };
 		3C432ED92D37B7B6006EBAD0 /* WeatherReposatoriesProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherReposatoriesProtocol.swift; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 				3C8554512D2EBAB700CEE26F /* WeatherEntity.swift */,
 				3C85544F2D2EBA9D00CEE26F /* ForecastEntity.swift */,
 				3C432EDF2D3AC329006EBAD0 /* CurrentWeatherEntity.swift */,
+				3C0C51D72D4023BF00454ADF /* Mapper.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -374,6 +377,7 @@
 				3C432ECF2D36F14C006EBAD0 /* FetchWeatherUsecase.swift in Sources */,
 				3C432EE72D3AD149006EBAD0 /* LocationDTO+Mapping.swift in Sources */,
 				3C75A7512D2F44A500088B9C /* HomeViewModel.swift in Sources */,
+				3C0C51D82D4023BF00454ADF /* Mapper.swift in Sources */,
 				3C9616252D30A14C005B422C /* ForecastCellViewModel.swift in Sources */,
 				3C85542D2D2EB71C00CEE26F /* AppDelegate.swift in Sources */,
 				3C432EF12D3C0666006EBAD0 /* WeatherListViewModel.swift in Sources */,

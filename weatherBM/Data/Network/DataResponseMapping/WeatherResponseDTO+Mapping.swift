@@ -12,12 +12,7 @@ struct WeatherResponseDTO: Decodable {
     let current: CurrentWeatherDTO
     let forecast: ForecastDTO
     
-    func toDomain() -> WeatherEntity {
-        return .init(location: location.toDomain(),
-                     current: current.toDomain(),
-                     forecastDayItems: forecast.forecastday.map{ $0.toDomain()}
-        )
-    }
+    
 }
 
 
