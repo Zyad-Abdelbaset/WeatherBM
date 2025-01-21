@@ -12,9 +12,9 @@ final class WeatherReposatories: WeatherReposatoriesProtocol {
     private let networkService: NetworkServiceWeatherProtocol
     
     init(networkChecker: ConnectionProtocol = Connection.shared,
-         nwService:NetworkServiceWeatherProtocol = NetworkService.shared) {
+         networkService: NetworkServiceWeatherProtocol = NetworkService.shared) {
         self.networkChecker = networkChecker
-        self.networkService = nwService
+        self.networkService = networkService
     }
     /// Function to Fetch Weather Response and return closure with WeatherResponseDTO or APIError
     ///  - Paramters:
