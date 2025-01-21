@@ -10,30 +10,35 @@ import Combine
 //MARK: View Combonent
 class HomeViewController: UIViewController, UITableViewDelegate {
     var weatherViewModel:HomeViewModelProtocol!
-    private var subscriptions = Set<AnyCancellable>()
-    var weatherView:WeatherView = WeatherView()
+    private var subscriptions: Set<AnyCancellable>!
+    private var weatherView:WeatherView!
     //MARK: ViewDidLoad
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        weatherView.putData()
-        self.view.addSubview(weatherView)
-        weatherView.translatesAutoresizingMaskIntoConstraints = false
         weatherView.tableView.dataSource = self
         weatherViewModel = HomeViewModel()
-        weatherView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
-        weatherView.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
-        weatherView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        weatherView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        subscriptions = Set<AnyCancellable>()
         weatherViewModel.showError = { val in
             self.presentAlert(message: val)
         }
-        
         bindData()
         weatherViewModel.loadDate()
         
     }
+    override func loadView() {
+        super.loadView()
+        weatherView = WeatherView()
+        weatherView.putData()
+        self.view.addSubview(weatherView)
+        weatherView.translatesAutoresizingMaskIntoConstraints = false
+        weatherView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+        weatherView.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
+        weatherView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        weatherView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+    }
 }
-
 //MARK: TVDataSourse
 extension HomeViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -56,7 +61,7 @@ extension HomeViewController: UITableViewDataSource{
 //MARK: Bind Data
 extension HomeViewController{
     private func bindData(){
-        weatherViewModel.weatherData.receive(on: DispatchQueue.main).sink(receiveCompletion: { completion in
+        weatherViewModel.weatherPublisher.receive(on: DispatchQueue.main).sink(receiveCompletion: { completion in
             switch completion {
             case .finished:
                 print("Finished")
@@ -96,8 +101,7 @@ extension HomeViewController{
 
 #Preview{
     HomeViewController()
+    
 }
-
-
 
 //data.forecast.forecastday.first?.day.maxTempratureInC
