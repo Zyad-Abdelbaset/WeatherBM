@@ -12,11 +12,14 @@ protocol FetchWeatherUsecaseProtocol {
     func excute(completion: @escaping(AnyPublisher<WeatherEntity, APIError>)->Void)
 }
 
-class FetchWeatherUsecase:FetchWeatherUsecaseProtocol {
-    private let weatherReposatory:WeatherReposatoriesProtocol
+class FetchWeatherUsecase: FetchWeatherUsecaseProtocol {
+    
+    private let weatherReposatory: WeatherReposatoriesProtocol
+    
     init(weatherReposatory: WeatherReposatoriesProtocol = WeatherReposatories()) {
         self.weatherReposatory = weatherReposatory
     }
+    
     func excute(completion: @escaping(AnyPublisher<WeatherEntity, APIError>) -> Void) {
         weatherReposatory.fetchWeatherResponse() { result in
             switch result {
@@ -29,4 +32,5 @@ class FetchWeatherUsecase:FetchWeatherUsecaseProtocol {
             }
         }
     }
+    
 }

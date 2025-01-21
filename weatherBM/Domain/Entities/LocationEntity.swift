@@ -7,7 +7,5 @@
 
 import Foundation
 struct LocationEntity {
-    let name, region, country: String?
-    let localtime: String?
-    
+    let name, region, country, localtime: String?
 }

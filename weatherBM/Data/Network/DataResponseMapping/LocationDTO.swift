@@ -10,8 +10,7 @@ import Foundation
 
 struct LocationDTO:Decodable {
     
-    let name, region, country: String?
-    let localtime: String?
+    let name, region, country, localtime: String?
     
     enum CodingKeys: String, CodingKey {
         case name, region, country,localtime
