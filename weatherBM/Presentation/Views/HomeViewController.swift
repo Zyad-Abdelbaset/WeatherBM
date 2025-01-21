@@ -14,12 +14,20 @@ class HomeViewController: UIViewController, UITableViewDelegate {
     private var weatherView:WeatherView!
     //MARK: ViewDidLoad
 
+    init(weatherViewModel: HomeViewModelProtocol, subscriptions: Set<AnyCancellable> = Set<AnyCancellable>(), weatherView: WeatherView = WeatherView()) {
+        self.weatherViewModel = weatherViewModel
+        self.subscriptions = subscriptions
+        self.weatherView = weatherView
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         weatherView.tableView.dataSource = self
-        weatherViewModel = HomeViewModel()
-        subscriptions = Set<AnyCancellable>()
         weatherViewModel.showError = { val in
             self.presentAlert(message: val)
         }
@@ -29,7 +37,6 @@ class HomeViewController: UIViewController, UITableViewDelegate {
     }
     override func loadView() {
         super.loadView()
-        weatherView = WeatherView()
         weatherView.putData()
         self.view.addSubview(weatherView)
         weatherView.translatesAutoresizingMaskIntoConstraints = false
@@ -100,7 +107,7 @@ extension HomeViewController{
 }
 
 #Preview{
-    HomeViewController()
+    HomeViewController(weatherViewModel: HomeViewModel())
     
 }
 
