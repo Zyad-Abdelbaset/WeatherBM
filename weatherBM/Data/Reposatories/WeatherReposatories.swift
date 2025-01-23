@@ -10,12 +10,12 @@ import Foundation
 final class WeatherReposatories: WeatherReposatoriesProtocol {
     private let networkChecker: ConnectionProtocol
     private let networkService: NetworkServiceWeatherProtocol
-    private let baseURL: String
+    private let endPoint: APIEndPoint
     private let apiKey: String
     private let longitude:Double
     private let latitude:Double
     private var link: URLComponents? {
-        var urlComponent = URLComponents(string: baseURL)
+        var urlComponent = URLComponents(string: endPoint.url)
         urlComponent?.queryItems = [
             URLQueryItem(name: "key", value: apiKey),
             URLQueryItem(name: "q", value: "\(latitude),\(longitude)"),
@@ -25,14 +25,14 @@ final class WeatherReposatories: WeatherReposatoriesProtocol {
         ]
         return urlComponent
     }
-    init(longitude: Double = 31.343122, latitude: Double = 30.051584, networkChecker: ConnectionProtocol = Connection.shared,
+    init(endPoint:APIEndPoint = .weather, longitude: Double = 31.343122, latitude: Double = 30.051584, networkChecker: ConnectionProtocol = Connection.shared,
          networkService: NetworkServiceWeatherProtocol = NetworkService.shared) {
         self.networkChecker = networkChecker
         self.networkService = networkService
         self.longitude = longitude
         self.latitude = latitude
         apiKey = "e4c83b3aec244e7bb2a120019242208"
-        baseURL = "http://api.weatherapi.com/v1/forecast.json"
+        self.endPoint = endPoint
     }
     
     
