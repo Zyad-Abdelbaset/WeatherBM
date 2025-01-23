@@ -10,19 +10,41 @@ import Foundation
 final class WeatherReposatories: WeatherReposatoriesProtocol {
     private let networkChecker: ConnectionProtocol
     private let networkService: NetworkServiceWeatherProtocol
-    
-    init(networkChecker: ConnectionProtocol = Connection.shared,
+    private let baseURL: String
+    private let apiKey: String
+    private let longitude:Double
+    private let latitude:Double
+    private var link: URLComponents? {
+        var urlComponent = URLComponents(string: baseURL)
+        urlComponent?.queryItems = [
+            URLQueryItem(name: "key", value: apiKey),
+            URLQueryItem(name: "q", value: "\(latitude),\(longitude)"),
+            URLQueryItem(name: "aqi", value: "yes"),
+            URLQueryItem(name: "days", value: "3"),
+            URLQueryItem(name: "alerts", value: "no")
+        ]
+        return urlComponent
+    }
+    init(longitude: Double = 31.343122, latitude: Double = 30.051584, networkChecker: ConnectionProtocol = Connection.shared,
          networkService: NetworkServiceWeatherProtocol = NetworkService.shared) {
         self.networkChecker = networkChecker
         self.networkService = networkService
+        self.longitude = longitude
+        self.latitude = latitude
+        apiKey = "e4c83b3aec244e7bb2a120019242208"
+        baseURL = "http://api.weatherapi.com/v1/forecast.json"
     }
-    /// Function to Fetch Weather Response and return closure with WeatherResponseDTO or APIError
-    ///  - Paramters:
-    ///   -
+    
+    
     func fetchWeatherResponse(completion: @escaping(Result<WeatherResponseDTO, APIError>) -> Void ){
-        networkChecker.checkConnectivity { isConnect in
+        networkChecker.checkConnectivity {[weak self] isConnect in
             if isConnect {
-                self.networkService.fetchData(type: WeatherResponseDTO.self) { result in
+                guard let url = self?.link?.url else {
+                    completion(.failure(.invalidEndPoint))
+                    return
+                }
+                let request = URLRequest(url: url)
+                self?.networkService.fetchData(type: WeatherResponseDTO.self, request: request) { result in
                     switch result {
                     case .failure(let error):
                         completion(.failure(error))

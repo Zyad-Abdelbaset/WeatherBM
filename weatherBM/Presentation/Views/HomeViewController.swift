@@ -78,7 +78,7 @@ extension HomeViewController{
         }, receiveValue: {data in
             self.weatherView.backgroundView.image = UIImage(named: data.current.isDay == 1 ? "day" : "day")
             
-            self.weatherView.infoStackView.addArrangedSubview(self.weatherView.makeLabel(text: data.location.country ?? "", fontSize: 20) )
+            self.weatherView.infoStackView.addArrangedSubview(self.weatherView.makeLabel(text: data.location.name ?? "", fontSize: 20) )
             
             self.weatherView.infoStackView.addArrangedSubview(self.weatherView.makeLabel(text: data.location.localtime ?? "", fontSize: 20))
             
