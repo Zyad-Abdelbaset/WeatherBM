@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 protocol NetworkServiceWeatherProtocol {
-    func fetchData<Temp: Decodable> (type: Temp.Type, completion: @escaping(Result<Temp, APIError>) -> Void )
+    func fetchData<Temp: Decodable> (type: Temp.Type, request:URLRequest, completion: @escaping(Result<Temp, APIError>) -> Void )
 }
 
 protocol NetworkServiceImageProtocol {
@@ -17,27 +17,16 @@ protocol NetworkServiceImageProtocol {
 }
 
 class NetworkService: NetworkServiceWeatherProtocol, NetworkServiceImageProtocol {
-    private let longitude = 31.343122
-    private let latitude = 30.051584
-    private let apiKey = "e4c83b3aec244e7bb2a120019242208"
+    //Ok
     static var shared: NetworkService = NetworkService()
     private let dataParser: DataParser
     private init() {
         dataParser = DataParser()
     }
-    
-    private var fullURL: String {
-        let url = "http://api.weatherapi.com/v1/forecast.json?key=\(apiKey)&q=\(latitude),\(longitude)&days=3&aqi=yes&alerts=no"
-        return url
-    }
-    
-    func fetchData<Temp: Decodable> (type: Temp.Type, completion: @escaping(Result<Temp, APIError>) -> Void ) {
-        guard let url = URL(string: fullURL) else {
-            completion(.failure(.invalidEndPoint) )
-            return
-        }
-        // Request and force cache it
-        let request = URLRequest(url: url)
+    //Request in param
+    func fetchData<Temp: Decodable> (type: Temp.Type, request:URLRequest, completion: @escaping(Result<Temp, APIError>) -> Void ) {
+        // Request
+
         URLSession.shared.dataTask(with: request) { data, response, error in
             //check Error
             if error != nil {
@@ -62,7 +51,6 @@ class NetworkService: NetworkServiceWeatherProtocol, NetworkServiceImageProtocol
                 completion(.failure(error))
             }
         }.resume()
-        
     }
     
     func fetchImage(link: String) -> AnyPublisher<Data, APIError> {
