@@ -19,6 +19,7 @@
 		3C432EE92D3AD15D006EBAD0 /* ForecastDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C432EE82D3AD15D006EBAD0 /* ForecastDTO.swift */; };
 		3C432EEB2D3AD171006EBAD0 /* CurrentWeatherDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C432EEA2D3AD171006EBAD0 /* CurrentWeatherDTO.swift */; };
 		3C59E9862D42831E00204535 /* APIEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C59E9852D42831E00204535 /* APIEndPoint.swift */; };
+		3C59E9882D42BAC800204535 /* WeatherReposatoriesConstatnt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C59E9872D42BAC800204535 /* WeatherReposatoriesConstatnt.swift */; };
 		3C5C2C9F2D36B42200D2122B /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5C2C9E2D36B42200D2122B /* UIViewController+Alert.swift */; };
 		3C75A74D2D2EC50000088B9C /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C75A74C2D2EC50000088B9C /* APIError.swift */; };
 		3C75A74F2D2ECF2E00088B9C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C75A74E2D2ECF2E00088B9C /* HomeViewController.swift */; };
@@ -53,6 +54,7 @@
 		3C432EE82D3AD15D006EBAD0 /* ForecastDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastDTO.swift; sourceTree = "<group>"; };
 		3C432EEA2D3AD171006EBAD0 /* CurrentWeatherDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherDTO.swift; sourceTree = "<group>"; };
 		3C59E9852D42831E00204535 /* APIEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndPoint.swift; sourceTree = "<group>"; };
+		3C59E9872D42BAC800204535 /* WeatherReposatoriesConstatnt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherReposatoriesConstatnt.swift; sourceTree = "<group>"; };
 		3C5C2C9E2D36B42200D2122B /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
 		3C75A74C2D2EC50000088B9C /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		3C75A74E2D2ECF2E00088B9C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -224,10 +226,10 @@
 		3C5C2C9A2D36B3BE00D2122B /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				3C59E9852D42831E00204535 /* APIEndPoint.swift */,
 				3C8554462D2EB95A00CEE26F /* NetworkService.swift */,
 				3C432EE32D3AC713006EBAD0 /* DataResponseMapping */,
 				3C5C2C932D36AF2A00D2122B /* Errors */,
-				3C59E9852D42831E00204535 /* APIEndPoint.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -235,7 +237,7 @@
 		3C5C2C9B2D36B3C700D2122B /* Reposatories */ = {
 			isa = PBXGroup;
 			children = (
-				3C432ED12D36F23A006EBAD0 /* WeatherReposatories.swift */,
+				3CC01B302D450A950089CE98 /* WeatherReposatory */,
 			);
 			path = Reposatories;
 			sourceTree = "<group>";
@@ -276,6 +278,15 @@
 				3C85542E2D2EB71C00CEE26F /* SceneDelegate.swift */,
 			);
 			path = Infrastructure;
+			sourceTree = "<group>";
+		};
+		3CC01B302D450A950089CE98 /* WeatherReposatory */ = {
+			isa = PBXGroup;
+			children = (
+				3C59E9872D42BAC800204535 /* WeatherReposatoriesConstatnt.swift */,
+				3C432ED12D36F23A006EBAD0 /* WeatherReposatories.swift */,
+			);
+			path = WeatherReposatory;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -357,6 +368,7 @@
 				3C8554452D2EB93B00CEE26F /* NetworkManager.swift in Sources */,
 				3C5C2C9F2D36B42200D2122B /* UIViewController+Alert.swift in Sources */,
 				3C9616202D309C2C005B422C /* ForecastCell.swift in Sources */,
+				3C59E9882D42BAC800204535 /* WeatherReposatoriesConstatnt.swift in Sources */,
 				3C8554502D2EBA9D00CEE26F /* ForecastEntity.swift in Sources */,
 				3C432EDE2D390139006EBAD0 /* DataParser.swift in Sources */,
 				3C432ED22D36F23A006EBAD0 /* WeatherReposatories.swift in Sources */,
