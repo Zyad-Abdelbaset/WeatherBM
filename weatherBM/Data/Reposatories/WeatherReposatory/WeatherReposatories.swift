@@ -27,7 +27,7 @@ final class WeatherReposatories: WeatherReposatoriesProtocol {
         return urlComponent
     }
     init(endPoint:APIEndPoint = .weather, longitude: Double = 31.343122, latitude: Double = 30.051584, networkChecker: ConnectionProtocol = Connection.shared,
-         networkService: NetworkServiceWeatherProtocol = NetworkService.shared) {
+         networkService: NetworkServiceWeatherProtocol = NetworkService()) {
         self.networkChecker = networkChecker
         self.networkService = networkService
         self.longitude = longitude

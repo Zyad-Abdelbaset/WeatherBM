@@ -18,16 +18,17 @@ protocol NetworkServiceImageProtocol {
 
 class NetworkService: NetworkServiceWeatherProtocol, NetworkServiceImageProtocol {
     //Ok
-    static var shared: NetworkService = NetworkService()
+    var session: URLSession
     private let dataParser: DataParser
-    private init() {
+    init(session:URLSession = .shared) {
         dataParser = DataParser()
+        self.session = session
     }
     //Request in param
     func fetchData<Temp: Decodable> (type: Temp.Type, request:URLRequest, completion: @escaping(Result<Temp, APIError>) -> Void ) {
         // Request
 
-        URLSession.shared.dataTask(with: request) { data, response, error in
+        session.dataTask(with: request) { data, response, error in
             //check Error
             if error != nil {
                 completion(.failure(.apiError))

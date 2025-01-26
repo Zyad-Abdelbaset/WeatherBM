@@ -10,7 +10,7 @@ import UIKit
 import Combine
 extension UIImageView {
     private var networkService: NetworkServiceImageProtocol {
-        return NetworkService.shared
+        return NetworkService()
     }
     ///Fetching image and show it inside UIImageView
     /// - Paramters:
