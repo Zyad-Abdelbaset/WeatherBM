@@ -39,6 +39,9 @@
 		3C9616252D30A14C005B422C /* ForecastCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9616242D30A14C005B422C /* ForecastCellViewModel.swift */; };
 		3C9616292D30A481005B422C /* DateOptimizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9616282D30A481005B422C /* DateOptimizer.swift */; };
 		3C9616322D35492C005B422C /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9616312D35492C005B422C /* WeatherView.swift */; };
+		3CC01B592D4A333A0089CE98 /* APIKeyProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC01B582D4A333A0089CE98 /* APIKeyProvider.swift */; };
+		3CC01B5B2D4A33800089CE98 /* KeyChainServise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC01B5A2D4A33800089CE98 /* KeyChainServise.swift */; };
+		3CC01B602D4A654C0089CE98 /* RequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC01B5F2D4A654C0089CE98 /* RequestBuilder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,6 +79,9 @@
 		3C9616242D30A14C005B422C /* ForecastCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastCellViewModel.swift; sourceTree = "<group>"; };
 		3C9616282D30A481005B422C /* DateOptimizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateOptimizer.swift; sourceTree = "<group>"; };
 		3C9616312D35492C005B422C /* WeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
+		3CC01B582D4A333A0089CE98 /* APIKeyProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeyProvider.swift; sourceTree = "<group>"; };
+		3CC01B5A2D4A33800089CE98 /* KeyChainServise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainServise.swift; sourceTree = "<group>"; };
+		3CC01B5F2D4A654C0089CE98 /* RequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestBuilder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -237,6 +243,8 @@
 		3C5C2C9B2D36B3C700D2122B /* Reposatories */ = {
 			isa = PBXGroup;
 			children = (
+				3CC01B572D4A33270089CE98 /* APIKey */,
+				3CC01B542D4A2FEC0089CE98 /* RequestBuilder */,
 				3CC01B302D450A950089CE98 /* WeatherReposatory */,
 			);
 			path = Reposatories;
@@ -287,6 +295,23 @@
 				3C432ED12D36F23A006EBAD0 /* WeatherReposatories.swift */,
 			);
 			path = WeatherReposatory;
+			sourceTree = "<group>";
+		};
+		3CC01B542D4A2FEC0089CE98 /* RequestBuilder */ = {
+			isa = PBXGroup;
+			children = (
+				3CC01B5F2D4A654C0089CE98 /* RequestBuilder.swift */,
+			);
+			path = RequestBuilder;
+			sourceTree = "<group>";
+		};
+		3CC01B572D4A33270089CE98 /* APIKey */ = {
+			isa = PBXGroup;
+			children = (
+				3CC01B582D4A333A0089CE98 /* APIKeyProvider.swift */,
+				3CC01B5A2D4A33800089CE98 /* KeyChainServise.swift */,
+			);
+			path = APIKey;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -381,14 +406,17 @@
 				3C75A7512D2F44A500088B9C /* HomeViewModel.swift in Sources */,
 				3C0C51D82D4023BF00454ADF /* Mapper.swift in Sources */,
 				3C9616252D30A14C005B422C /* ForecastCellViewModel.swift in Sources */,
+				3CC01B592D4A333A0089CE98 /* APIKeyProvider.swift in Sources */,
 				3C85542D2D2EB71C00CEE26F /* AppDelegate.swift in Sources */,
 				3C432EE92D3AD15D006EBAD0 /* ForecastDTO.swift in Sources */,
 				3C432EDA2D37B7B6006EBAD0 /* WeatherReposatoriesProtocol.swift in Sources */,
 				3C75A74F2D2ECF2E00088B9C /* HomeViewController.swift in Sources */,
 				3C85544E2D2EBA8C00CEE26F /* LocationEntity.swift in Sources */,
 				3C85542F2D2EB71C00CEE26F /* SceneDelegate.swift in Sources */,
+				3CC01B5B2D4A33800089CE98 /* KeyChainServise.swift in Sources */,
 				3C8554522D2EBAB700CEE26F /* WeatherEntity.swift in Sources */,
 				3C75A74D2D2EC50000088B9C /* APIError.swift in Sources */,
+				3CC01B602D4A654C0089CE98 /* RequestBuilder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
